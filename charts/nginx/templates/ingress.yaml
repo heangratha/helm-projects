@@ -24,22 +24,22 @@ spec:
     secretName: {{ .secretName }}-{{ $fullName }}
     {{- end }}
     rules:
-    - host: {{ .Values.base_domain }}
-    {{- range .Values.ingress.hosts }}
-      http:
-        paths:
-          {{- range .paths }}
-          - path: {{ .path }}
-            backend:
-              {{- if semverCompare ">=1.19-0" $.Capabilities.KubeVersion.GitVersion }}
-              service:
-                name: {{ $fullName }}
-                port:
-                  number: {{ $svcPort }}
-              {{- else }}
-              serviceName: {{ $fullName }}
-              servicePort: {{ $svcPort }}
-              {{- end }}
-          {{- end }}
-    {{- end }}
+      - host: {{ .Values.base_domain }}
+        {{- range .Values.ingress.hosts }}
+        http:
+          paths:
+            {{- range .paths }}
+            - path: {{ .path }}
+              backend:
+                {{- if semverCompare ">=1.19-0" $.Capabilities.KubeVersion.GitVersion }}
+                service:
+                  name: {{ $fullName }}
+                  port:
+                    number: {{ $svcPort }}
+                {{- else }}
+                serviceName: {{ $fullName }}
+                servicePort: {{ $svcPort }}
+                {{- end }}
+            {{- end }}
+        {{- end }}
 {{- end }}
