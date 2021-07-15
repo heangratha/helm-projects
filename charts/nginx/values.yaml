@@ -4,7 +4,7 @@
 
 replicaCount: 1
 
-project_name: NGINX1
+project_name: NGINX
 base_domain: nginx.do.techwithratha.com
 
 image:
@@ -45,14 +45,14 @@ ingress:
     nginx.ingress.kubernetes.io/session-cookie-max-age: "172800"
     cert-manager.io/cluster-issuer: letsencrypt-prod
   hosts:
-    - host: "nginx.do.techwithratha.com"
+    - host: ""
       paths:
         - path: /
           pathType: ImplementationSpecific
   tls:
    - secretName: "secret-letsencrypt"
      hosts:
-       - "nginx.do.techwithratha.com"
+       - ""
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious

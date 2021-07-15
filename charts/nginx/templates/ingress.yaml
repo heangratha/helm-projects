@@ -17,29 +17,31 @@ metadata:
     {{- toYaml . | nindent 4 }}
   {{- end }}
 spec:
+  {{- if .Values.ingress.tls }}
   tls:
     - hosts:
-      - {{ .Values.base_domain | quote }}
-    {{- range .Values.ingress.tls }}    
-    secretName: {{ .secretName }}-{{ $fullName }}
+        - {{ .Values.base_domain | quote }}
+    {{- range .Values.ingress.tls }}
+      secretName: {{ .secretName }}
     {{- end }}
-    rules:
-      - host: {{ .Values.base_domain }}
-        {{- range .Values.ingress.hosts }}
-        http:
-          paths:
-            {{- range .paths }}
-            - path: {{ .path }}
-              backend:
-                {{- if semverCompare ">=1.19-0" $.Capabilities.KubeVersion.GitVersion }}
-                service:
-                  name: {{ $fullName }}
-                  port:
-                    number: {{ $svcPort }}
-                {{- else }}
-                serviceName: {{ $fullName }}
-                servicePort: {{ $svcPort }}
-                {{- end }}
-            {{- end }}
-        {{- end }}
+  {{- end }}
+  rules:
+    - host: {{ .Values.base_domain | quote }}
+      {{- range .Values.ingress.hosts }}
+      http:
+        paths:
+          {{- range .paths }}
+          - path: {{ .path }}
+            backend:
+              {{- if semverCompare ">=1.19-0" $.Capabilities.KubeVersion.GitVersion }}
+              service:
+                name: {{ $fullName }}
+                port:
+                  number: {{ $svcPort }}
+              {{- else }}
+              serviceName: {{ $fullName }}
+              servicePort: {{ $svcPort }}
+              {{- end }}
+          {{- end }}
+      {{- end }}
 {{- end }}
