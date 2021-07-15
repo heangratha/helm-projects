@@ -20,9 +20,9 @@ spec:
   tls:
     - hosts:
       - {{ .Values.base_domain | quote }}
-      {{- range .Values.ingress.tls }}    
-      secretName: {{ .secretName }}-{{ $fullName }}
-      {{- end }}
+    {{- range .Values.ingress.tls }}    
+    secretName: {{ .secretName }}-{{ $fullName }}
+    {{- end }}
     rules:
       - host: {{ .Values.base_domain }}
         {{- range .Values.ingress.hosts }}
