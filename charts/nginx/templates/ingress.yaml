@@ -22,7 +22,7 @@ spec:
     - hosts:
         - {{ .Values.base_domain | quote }}
     {{- range .Values.ingress.tls }}
-      secretName: {{ .secretName }}
+      secretName: {{ .secretName }}-{{ $fullName }}
     {{- end }}
   {{- end }}
   rules:
