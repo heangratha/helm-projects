@@ -4,6 +4,7 @@
 
 replicaCount: 1
 
+project_name: NGINX1
 base_domain: nginx.do.techwithratha.com
 
 image:
