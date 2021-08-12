@@ -3,7 +3,7 @@ kind: CronJob
 metadata:
   name: {{ include "evidencity-auth-backup.fullname" . }}
 spec:
-  schedule: "30 0 * * *"
+  schedule: "{{ .Value.scheduler }}"
   jobTemplate:
     spec:
       template:
