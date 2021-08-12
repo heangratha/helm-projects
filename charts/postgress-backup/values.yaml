@@ -5,7 +5,7 @@
 replicaCount: 1
 
 image:
-  repository: pg_backup
+  repository: rathaheang/postgress_backup_s3
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: "11"
