@@ -23,7 +23,6 @@ env:
   aws_region: ""
   aws_bucket: ""
 
-imagePullSecrets:
-- name: secret-evidencity-github-com
+imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
