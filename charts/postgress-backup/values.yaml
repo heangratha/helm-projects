@@ -1,0 +1,26 @@
+# Default values for evidencity-auth-backup.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+image:
+  repository: pg_backup
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: "11"
+env:
+  pg_host: ""
+  pg_user: ""
+  pg_pass: ""
+  pg_db: ""
+  gpg_key: ""
+  aws_access: ""
+  aws_secret: ""
+  aws_region: ""
+  aws_bucket: ""
+
+imagePullSecrets:
+- name: secret-evidencity-github-com
+nameOverride: ""
+fullnameOverride: ""
