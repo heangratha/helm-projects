@@ -19,20 +19,20 @@ spec:
               imagePullPolicy: {{ .Values.image.pullPolicy }}
               env:
                 - name: GPG_KEY_ID
-                  value: {{ Values.env.gpg_key }}
+                  value: {{ .Values.env.gpg_key }}
                 - name: POSTGRES_HOST
-                  value: {{ Values.env.pg_host }}
+                  value: {{ .Values.env.pg_host }}
                 - name: POSTGRES_USER
-                  value: {{ Values.env.pg_user }}
+                  value: {{ .Values.env.pg_user }}
                 - name: POSTGRES_PASSWORD
-                  value: {{ Values.env.pg_pass }}
+                  value: {{ .Values.env.pg_pass }}
                 - name: POSTGRES_DB
-                  value: {{ Values.env.pg_db }}
+                  value: {{ .Values.env.pg_db }}
                 - name: AWS_ACCESS_KEY_ID
-                  value: {{ Values.env.aws_access }}
+                  value: {{ .Values.env.aws_access }}
                 - name: AWS_SECRET_ACCESS_KEY
-                  value: {{ Values.env.aws_secret }}
+                  value: {{ .Values.env.aws_secret }}
                 - name: AWS_DEFAULT_REGION
-                  value: {{ Values.env.aws_region }}
+                  value: {{ .Values.env.aws_region }}
                 - name: S3_BUCKET
-                  value: {{ Values.env.aws_bucket }}
+                  value: {{ .Values.env.aws_bucket }}
