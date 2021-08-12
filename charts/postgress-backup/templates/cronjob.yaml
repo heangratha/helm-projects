@@ -4,9 +4,9 @@ metadata:
   name: {{ include "evidencity-auth-backup.fullname" . }}
 spec:
   schedule: "{{ .Values.schedule }}"
-  ttlSecondsAfterFinished: 100
   jobTemplate:
     spec:
+      ttlSecondsAfterFinished: 100
       template:
         spec:
           restartPolicy: Never
